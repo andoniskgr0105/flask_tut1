@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+
+{% block title %}{{title}}{% endblock title %}
+
+{% block content %}
+    <h1>Form data</h1>
+    <form method="post">
+        <input type="text" name="usr" placeholder="username">
+        <input type="text" name="pwd" placeholder="password">
+        <input type="submit" value="Login">
+    </form>
+    <div>
+        {{message}}
+    </div>
+    
+    
+
+        
+{% endblock content %}

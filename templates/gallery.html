@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+
+{% block title %}{{title}}{% endblock title %}
+
+{% block content %}
+
+{% for ph in thumb_photos %}
+    <a href="{{url_for('photos',filename=ph)}}"><img src="./static/photos/thumb/{{ph}}"/></a>
+{% endfor %}
+
+{% endblock content %}
