@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+{% block title %}{{title}}{% endblock title %}
+
+{% block content %}
+    <h1>Admin Functions</h1>
+    <a href="{{url_for('createthumb')}}">Thumbnails</a>
+    <div>
+        {{message}}
+    </div>
+    
+    
+
+        
+{% endblock content %}

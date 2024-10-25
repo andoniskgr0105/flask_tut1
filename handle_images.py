@@ -9,7 +9,6 @@ def get_all_photos():
     for dir_photos in scan_path:
         if dir_photos.is_dir():
             for photo in os.scandir(dir_photos):
-                create_thumbnail_photos(path_folder_photos,dir_photos,photo)
                 all_photos.append(photo.name)
     return all_photos
 
