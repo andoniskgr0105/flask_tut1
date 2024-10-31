@@ -9,18 +9,25 @@ app.secret_key = 'someKey'
 
 IMAGES_FOLDER = './static/photos/wd/'
 
-
-@app.route('/', methods=['GET', 'POST'])
-def index():
-    if (request.method) == 'GET':
-        return render_template('index.html', message='index page',title='Andoniskgr')
-    elif (request.method == 'POST'):
+@app.route('/admin',methods=['GET','POST'])
+def admin():
+    if request.method=='GET':
+        return render_template('login.html',title='Login Page')
+    elif request.method=='POST':
+        status=False
         username = request.form.get('usr').lower()
         password = request.form.get('pwd')
         if (username == 'tony' and password == '1234'):
-            return 'OK'
+            status=True
+            return render_template('admin.html',login_status=status)
         else:
-            return 'NOT OK'
+            return render_template('login.html',title='Login Page')
+    
+    
+@app.route('/')
+def index():
+    return render_template('index.html', message='index page',title='Index Page')
+        
 
 
 @app.route('/file_upload', methods=['GET', 'POST'])
@@ -30,7 +37,6 @@ def file_upload():
 
 @app.route('/gallery')
 def gallery():
-    imgs.get_all_photos()
     thumb_photos=imgs.get_thumbnail_photos()
     return render_template('gallery.html', thumb_photos=thumb_photos, message='index page', title="My Gallery")
 
